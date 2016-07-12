@@ -1,7 +1,7 @@
-package com.nuanxinli.service.initializer;
+package com.uushixun.service.initializer;
 
-import com.nuanxinli.service.handler.TcpServerHandler;
-import com.nuanxinli.service.listener.ChatServiceListener;
+import com.uushixun.service.handler.TcpServerHandler;
+import com.uushixun.service.listener.ChatServiceListener;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

@@ -1,13 +1,13 @@
-package com.nuanxinli;
+package com.uushixun;
 
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import com.nuanxinli.client.IMClient;
-import com.nuanxinli.client.listener.ChatServiceListener;
-import com.nuanxinli.client.mode.SocketConfig;
+import com.uushixun.client.IMClient;
+import com.uushixun.client.listener.ChatServiceListener;
+import com.uushixun.client.mode.SocketConfig;
 
 public class CliectTest {
 	

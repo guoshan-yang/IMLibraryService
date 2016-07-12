@@ -1,4 +1,4 @@
-package com.nuanxinli.client.mode;
+package com.uushixun.client.mode;
 
 /**
  * Created by YangGuoShan on 16/7/5 09:44.

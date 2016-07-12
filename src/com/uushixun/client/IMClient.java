@@ -1,12 +1,12 @@
-package com.nuanxinli.client;
+package com.uushixun.client;
 
 /**
  * Created by YangGuoShan on 16/7/4 19:12.
  * Describe:
  */
-import com.nuanxinli.client.handler.ChatClientInitializer;
-import com.nuanxinli.client.listener.ChatServiceListener;
-import com.nuanxinli.client.mode.SocketConfig;
+import com.uushixun.client.handler.ChatClientInitializer;
+import com.uushixun.client.listener.ChatServiceListener;
+import com.uushixun.client.mode.SocketConfig;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;

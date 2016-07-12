@@ -1,12 +1,12 @@
-package com.nuanxinli;
+package com.uushixun;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Iterator;
 
-import com.nuanxinli.service.TcpChatServer;
-import com.nuanxinli.service.handler.AttributeKeys;
-import com.nuanxinli.service.listener.ChatServiceListener;
+import com.uushixun.service.TcpChatServer;
+import com.uushixun.service.handler.AttributeKeys;
+import com.uushixun.service.listener.ChatServiceListener;
 
 import io.netty.channel.Channel;
 

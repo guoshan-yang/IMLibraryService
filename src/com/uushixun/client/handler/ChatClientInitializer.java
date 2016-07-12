@@ -1,7 +1,7 @@
-package com.nuanxinli.client.handler;
+package com.uushixun.client.handler;
 
 
-import com.nuanxinli.client.listener.ChatServiceListener;
+import com.uushixun.client.listener.ChatServiceListener;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
