@@ -1,6 +1,5 @@
 package com.uushixun.service;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 
 import com.uushixun.service.handler.AttributeKeys;
@@ -92,6 +91,10 @@ public class TcpChatServer{
 				return userId.equals(channel.attr(AttributeKeys.UserId).get());
 			}
 		});
+    }
+    
+    public void pushToSingleDevice(String text, Channel channel) {
+    	channel.writeAndFlush(text + "\r\n");
     }
     
     public void pushToAllDevice(String text) {

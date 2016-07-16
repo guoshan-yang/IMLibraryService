@@ -4,6 +4,7 @@ package com.uushixun.client;
  * Created by YangGuoShan on 16/7/4 19:12.
  * Describe:
  */
+
 import com.uushixun.client.handler.ChatClientInitializer;
 import com.uushixun.client.listener.ChatServiceListener;
 import com.uushixun.client.mode.SocketConfig;
@@ -30,7 +31,11 @@ public class IMClient {
 	private Channel channel;
 	
 	private boolean isConnect = false;
-	
+
+	private int reconnectNum = Integer.MAX_VALUE;
+
+	private long reconnectIntervalTime = 5000;
+
 	public static IMClient getInstance(SocketConfig config, ChatServiceListener chatistener) {
 		imClient.setSocketConfig(config);
 		imClient.setChatistener(chatistener);
@@ -41,7 +46,7 @@ public class IMClient {
 		return imClient;
 	}
 	
-	public IMClient connect() {
+	public synchronized IMClient connect() {
 		if (isConnect == false) {
 			group = new NioEventLoopGroup();
 			Bootstrap bootstrap = new Bootstrap().group(group)
@@ -64,7 +69,7 @@ public class IMClient {
 
 			} catch (Exception e) {
 				chatistener.onServiceStatusConnectChanged(ChatServiceListener.STATUS_CONNECT_ERROR);
-				e.printStackTrace();
+				reconnect();
 			}
 		}
 		return this;
@@ -75,12 +80,33 @@ public class IMClient {
 	}
 
 	public void reconnect() {
-		disconnect();
-		connect();
+		if(reconnectNum >0 && !isConnect){
+			reconnectNum--;
+			try {
+				Thread.sleep(reconnectIntervalTime);
+			} catch (InterruptedException e) {}
+			System.out.println("重新连接");
+			disconnect();
+			connect();
+		}else{
+			disconnect();
+		}
 	}
-	
+
 	public void sendMsgToServer(String msg) {
 		channel.writeAndFlush(msg+"\r\n");
+	}
+
+	public void sendMsgToServer(String msg,ChannelFutureListener listener){
+		channel.writeAndFlush(msg+"\r\n").addListener(listener);
+	}
+
+	public void setReconnectNum(int reconnectNum) {
+		this.reconnectNum = reconnectNum;
+	}
+
+	public void setReconnectIntervalTime(long reconnectIntervalTime) {
+		this.reconnectIntervalTime = reconnectIntervalTime;
 	}
 
 	private void setSocketConfig(SocketConfig socketConfig) {
