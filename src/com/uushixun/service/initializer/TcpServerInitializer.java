@@ -21,7 +21,7 @@ public class TcpServerInitializer extends ChannelInitializer<SocketChannel> {
 	private final StringEncoder ENCODER = new StringEncoder();
 	private final TcpServerHandler SERVER_HANDLER;
 	private int READ_WAIT_SECONDS = 13;
-
+    private int WRITE_WAIT_SECONDS = 10;
 	public TcpServerInitializer(ChatServiceListener serviceListener) {
 		SERVER_HANDLER = new TcpServerHandler(serviceListener);
 	}
@@ -33,7 +33,7 @@ public class TcpServerInitializer extends ChannelInitializer<SocketChannel> {
 	@Override
 	public void initChannel(SocketChannel ch) throws Exception {
 		ChannelPipeline pipeline = ch.pipeline();
-		pipeline.addLast(new IdleStateHandler(READ_WAIT_SECONDS, 0, 0));
+		pipeline.addLast(new IdleStateHandler(READ_WAIT_SECONDS, WRITE_WAIT_SECONDS, 0));
 		pipeline.addLast(new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
 		pipeline.addLast(DECODER);
 		pipeline.addLast(ENCODER);

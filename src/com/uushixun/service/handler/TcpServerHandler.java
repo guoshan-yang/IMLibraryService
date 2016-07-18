@@ -61,6 +61,8 @@ public class TcpServerHandler extends SimpleChannelInboundHandler<String> {
 			if (event.state().equals(IdleState.READER_IDLE)) {
 				TcpChatServer.getInstance().getAllChannels().remove(channel);
 				channel.close();
+			}else if(event.state() == IdleState.WRITER_IDLE){
+				ctx.channel().writeAndFlush("Service-Ping\r\n");
 			}
 		}
 		super.userEventTriggered(ctx, evt);
