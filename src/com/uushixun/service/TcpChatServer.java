@@ -91,6 +91,8 @@ public class TcpChatServer{
 				return userId.equals(channel.attr(AttributeKeys.UserId).get());
 			}
 		});
+    	
+    	allChannels.writeAndFlush("message");
     }
     
     public void pushToSingleDevice(String text, Channel channel) {

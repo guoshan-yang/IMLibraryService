@@ -23,6 +23,8 @@ public class CliectTest {
 			public void onServiceStatusConnectChanged(int statusCode) {		//连接状态监听
 				//TODO	连接服务成功之后, 需要向服务器发送login消息, 用于绑定设备
 				System.out.println("statusCode :" + statusCode);
+				
+				client.sendMsgToServer(msg);
 			}
 			
 			@Override

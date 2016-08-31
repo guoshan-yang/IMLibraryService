@@ -23,7 +23,6 @@ public class ChatClientHandler extends SimpleChannelInboundHandler<String> {
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 		IMClient.getInstance().setConnectStatus(true);
-		chatistener.onServiceStatusConnectChanged(ChatServiceListener.STATUS_CONNECT_SUCCESS);
 	}
 	
 	@Override

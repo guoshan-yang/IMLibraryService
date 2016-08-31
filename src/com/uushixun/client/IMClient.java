@@ -61,6 +61,7 @@ public class IMClient {
 						if (channelFuture.isSuccess()) {
 							isConnect = true;
 							channel = channelFuture.channel();
+							chatistener.onServiceStatusConnectChanged(ChatServiceListener.STATUS_CONNECT_SUCCESS);
 						} else {
 							isConnect = false;
 						}
